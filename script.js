@@ -1,25 +1,40 @@
-// Digital signage logic
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('Hello World App Initialized');
+/**
+ * Signage Lifecycle Manager
+ * Handles auto-refresh and ambient logic for digital signage running continuously.
+ */
+(() => {
+    class SignageApp {
+        constructor() {
+            this.refreshInterval = 3600000; // 1 hour
+            this.init();
+        }
 
-    // Add a subtle pulse animation to the images
-    const images = document.querySelectorAll('.top-image');
-    images.forEach((img, index) => {
-        img.style.animation = `pulse 3s ease-in-out ${index * 0.5}s infinite alternate`;
-    });
+        init() {
+            console.log('[SignageApp] Initialized with robust lifecycle management');
+            this.scheduleRefresh();
+            this.addErrorHandlers();
+        }
 
-    // Simple auto-refresh every hour to keep content fresh for signage
-    setTimeout(() => {
-        window.location.reload();
-    }, 3600000);
-});
+        scheduleRefresh() {
+            console.log(`[SignageApp] Next refresh scheduled in ${this.refreshInterval / 60000} minutes`);
+            setTimeout(() => {
+                console.log('[SignageApp] Executing scheduled refresh to maintain memory health');
+                window.location.reload();
+            }, this.refreshInterval);
+        }
 
-// Keyframes for image pulse
-const styleSheet = document.createElement("style");
-styleSheet.innerText = `
-@keyframes pulse {
-    from { transform: scale(1); }
-    to { transform: scale(1.05); }
-}
-`;
-document.head.appendChild(styleSheet);
+        addErrorHandlers() {
+            window.addEventListener('error', (event) => {
+                console.error('[SignageApp] Unhandled error detected:', event.error);
+                // On massive failure, could trigger a forced reload here, but logging for now
+            });
+        }
+    }
+
+    // Boot app when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => new SignageApp());
+    } else {
+        new SignageApp();
+    }
+})();

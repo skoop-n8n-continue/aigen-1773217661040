@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Hello World Signage</title>
+  <link rel="stylesheet" href="styles.css?v=z8y7x6">
   <link rel="manifest" href="./manifest.json">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>Hello World Signage</title>
-    <link rel="stylesheet" href="styles.css?v=a1b2c3">
 </head>
 <body>
-    <div class="container">
-        <div class="image-wrapper">
-            <img src="assets/image1.png?v=a1b2c3" alt="Image 1" class="top-image">
-            <img src="assets/image2.png?v=a1b2c3" alt="Image 2" class="top-image">
-        </div>
-        <h1 class="hello-text">Hello World</h1>
+  <main class="main-canvas">
+    <div class="image-gallery-showcase">
+      <img src="assets/image1.png?v=z8y7x6" alt="Showcase 1" class="showcase-img">
+      <img src="assets/image2.png?v=z8y7x6" alt="Showcase 2" class="showcase-img">
     </div>
-    <script src="script.js?v=a1b2c3"></script>
+    <header class="hero-container">
+      <h1 class="hero-text">Hello World</h1>
+    </header>
+  </main>
+  <script src="script.js?v=z8y7x6"></script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
